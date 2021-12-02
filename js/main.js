@@ -7,10 +7,10 @@ const section = document.querySelector('.js-data-actions');
 section.classList.remove('hidden'); */
 
 
-/* display burger menu
+// display burger menu
 
 const menu = document.querySelector('.js-menudropdown');
-menu.classList.remove('collapsed'); */
+menu.classList.remove('collapsed');
 
 
 // add links
@@ -76,9 +76,37 @@ const link3 = `<article class="data__item">
 
 let html = '';
 
-html += `<li class="data__listitem">${link1}</li>`;
-html += `<li class="data__listitem">${link2}</li>`;
-html += `<li class="data__listitem">${link3}</li>`;
+
+// search "materiales"
+
+const input_search_desc = document.querySelector('.js-data-search__tag');
+input_search_desc.value = 'materiales';
+const descrSearchText = input_search_desc.value;
+
+if (link1_desc.includes(descrSearchText) === true) {
+    html += `<li class="data__listitem">${link1}</li>`;
+}
+
+if (link2_desc.includes(descrSearchText) === true) {
+    html += `<li class="data__listitem">${link2}</li>`;
+}
+
+if (link3_desc.includes(descrSearchText) === true) {
+    html += `<li class="data__listitem">${link3}</li>`;
+}
 
 const listLinks = document.querySelector('.js-data__list');
 listLinks.innerHTML = html;
+
+
+// change tableview -> listview or listview -> tableview
+
+const data = document.querySelector('.js-data');
+
+if (data.classList.contains('tableview') === true) {
+    data.classList.remove('tableview');
+    data.classList.add('listview');
+} else if (data.classList.contains('listview') === true) {
+    data.classList.remove('listview');
+    data.classList.add('tableview');
+}
