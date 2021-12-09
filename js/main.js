@@ -116,16 +116,21 @@ const listLinks = document.querySelector('.js-data__list');
 listLinks.innerHTML = html;
 
 
-/* display new bookmark form
+// display new bookmark form
 
 const section = document.querySelector('.js-data-actions');
-section.classList.remove('hidden'); */
+
+section.addEventListener('click', showAddForm);
+
+function showAddForm() {
+    section.classList.remove('hidden');
+}
 
 
 // display burger menu
 
-const menu = document.querySelector('.js-menudropdown');
 const burgerElement = document.querySelector('.js-header__menulink');
+const menu = document.querySelector('.js-menudropdown');
 
 burgerElement.addEventListener('click', handlerClickLinkDropdown);
 
@@ -138,9 +143,9 @@ function handlerClickLinkDropdown(event) {
 
 // change tableview -> listview & listview -> tableview
 
-const data = document.querySelector('.js-data');
 const listviewButtonElement = document.querySelector('.js-button-listview');
 const tableviewButtonElement = document.querySelector('.js-button-tableview');
+const data = document.querySelector('.js-data');
 
 listviewButtonElement.addEventListener('click', handlerListviewClick);
 tableviewButtonElement.addEventListener('click', handlerTableviewClick);
