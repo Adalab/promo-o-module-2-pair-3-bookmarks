@@ -1,4 +1,4 @@
-# Recopilatorio de Bookmarks
+# Recopilatorio de Bookmarks (día 1)
 
 Vamos a hacer una aplicación web para ir anotando los enlaces y páginas web que nos parezcan interesantes.
 
@@ -20,7 +20,7 @@ Por último, la usuaria puede añadir nuevos enlaces pulsando sobre el botón "N
 
 ---
 
-# Bookmark: Agregar contenido
+# Bookmark: Agregar contenido (día 2)
 
 ## Ejercicios
 
@@ -62,7 +62,7 @@ Ahora vamos a dar nuestros primeros pasos para que nuestra página sea dinámica
 
 ---
 
-# Bookmark: Usar variables
+# Bookmark: Usar variables (día 3)
 
 ## Ejercicio 1
 
@@ -103,7 +103,7 @@ P.D.- Comenta el código de ayer en el que se mostraban el menú y el formulario
 
 ---
 
-# Bookmark: Condicionales
+# Bookmark: Condicionales (día 4)
 
 ## Ejercicio 1
 
@@ -167,7 +167,7 @@ Cambia el valor de la variable `bmk_1_seen` a `true` o `false`. En dependencia d
 
 ---
 
-# Bookmark: Eventos
+# Bookmark: Eventos (día 5)
 
 ## Ejercicio 1
 
