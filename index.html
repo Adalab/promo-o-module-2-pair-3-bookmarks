@@ -17,7 +17,7 @@
     <div class="page">
         <header class="header">
             <nav class="header__menu">
-                <a class="header__menulink" href="" title="Mostrar opciones de filtrado y visualización">
+                <a class="header__menulink js-header__menulink" href="" title="Mostrar opciones de filtrado y visualización">
                     <i class="fas fa-hamburger"></i>
                 </a>
             </nav>
@@ -43,13 +43,13 @@
             </fieldset>
             <fieldset class="menu__data-layout">
                 <h2 class="menu__title">Visualización</h2>
-                <button class="data-layout__button" title="Mostrar los bookmarks organizados como una de lista de tarjetas"><i class="fas fa-th"></i><span class="data-layout__button--text">Vista tarjetas</span></button>
-                <button class="data-layout__button selected" title="Mostrar los bookmarks como una tabla"><i class="fas fa-bars"></i><span class="data-layout__button--text">Vista tabla</span></button>
+                <button class="data-layout__button js-button-listview" title="Mostrar los bookmarks organizados como una de lista de tarjetas"><i class="fas fa-th"></i><span class="data-layout__button--text">Vista tarjetas</span></button>
+                <button class="data-layout__button js-button-tableview selected" title="Mostrar los bookmarks como una tabla"><i class="fas fa-bars"></i><span class="data-layout__button--text">Vista tabla</span></button>
             </fieldset>
         </form>
         <main class="main">
             <h2>Lista de enlaces</h2>
-            <section class="data listview js-data">
+            <section class="data tableview js-data">
                 <div class="data__header">
                     <div>URL</div>
                     <div>Leída</div>

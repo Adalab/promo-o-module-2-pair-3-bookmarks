@@ -1,18 +1,6 @@
 'use strict';
 
 
-/* display new bookmark form
-
-const section = document.querySelector('.js-data-actions');
-section.classList.remove('hidden'); */
-
-
-// display burger menu
-
-const menu = document.querySelector('.js-menudropdown');
-menu.classList.remove('collapsed');
-
-
 // links info
 
 const link1_url = 'https://books.adalab.es/materiales-del-curso-n/-MdR6Gp68BX20m1pi0z2/modulo-2-programando-la-web/javascript/2_1_intro_a_la_programacion';
@@ -128,14 +116,51 @@ const listLinks = document.querySelector('.js-data__list');
 listLinks.innerHTML = html;
 
 
+/* display new bookmark form
+
+const section = document.querySelector('.js-data-actions');
+section.classList.remove('hidden'); */
+
+
+// display burger menu
+
+const menu = document.querySelector('.js-menudropdown');
+const burgerElement = document.querySelector('.js-header__menulink');
+
+burgerElement.addEventListener('click', handlerClickLinkDropdown);
+
+function handlerClickLinkDropdown(event) {
+    event.preventDefault();
+
+    menu.classList.toggle('collapsed');
+}
+
+
 // change tableview -> listview & listview -> tableview
 
 const data = document.querySelector('.js-data');
+const listviewButtonElement = document.querySelector('.js-button-listview');
+const tableviewButtonElement = document.querySelector('.js-button-tableview');
 
-if (data.classList.contains('tableview') === true) {
+listviewButtonElement.addEventListener('click', handlerListviewClick);
+tableviewButtonElement.addEventListener('click', handlerTableviewClick);
+
+function handlerListviewClick(event) {
+    event.preventDefault();
+
+    listviewButtonElement.classList.add('selected');
+    tableviewButtonElement.classList.remove('selected');
+
     data.classList.remove('tableview');
     data.classList.add('listview');
-} else if (data.classList.contains('listview') === true) {
+}
+
+function handlerTableviewClick(event) {
+    event.preventDefault();
+
+    tableviewButtonElement.classList.add('selected');
+    listviewButtonElement.classList.remove('selected');
+
     data.classList.remove('listview');
     data.classList.add('tableview');
 }
