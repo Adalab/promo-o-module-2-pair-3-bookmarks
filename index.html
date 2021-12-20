@@ -26,25 +26,35 @@
         <form class="menudropdown collapsed js-menudropdown">
             <fieldset class="menu__data-search">
                 <h2 class="menu__title">Búsqueda</h2>
-                <label class="data-search__epigraph" for="search_desc">Buscar por descripción: <input class="data-search__tag js-data-search__tag" type="text" name="search_desc" id="search_desc"></label>
+                <label class="data-search__epigraph" for="search_desc">Buscar por descripción: <input
+                        class="data-search__tag js-data-search__tag" type="text" name="search_desc"
+                        id="search_desc"></label>
                 <h3 class="data-search__epigraph">Buscar por etiquetas:</h3>
-                <label class="data-search__tag" for="search_desc"><input type="checkbox" name="search_tags" id="search_tags_javascript"> <small class="data-search__hidden-label-text">Buscar por etiqueta </small>javascipt</label>
-                <label class="data-search__tag" for="search_desc"><input type="checkbox" name="search_tags" id="search_tags_portfolio">  <small class="data-search__hidden-label-text">Buscar por etiqueta </small>portfolio</label>
-                <label class="data-search__tag" for="search_desc"><input type="checkbox" name="search_tags" id="search_tags_portfolio">  <small class="data-search__hidden-label-text">Buscar por etiqueta </small>html</label>
+                <label class="data-search__tag" for="search_desc"><input type="checkbox" name="search_tags"
+                        id="search_tags_javascript"> <small class="data-search__hidden-label-text">Buscar por etiqueta
+                    </small>javascipt</label>
+                <label class="data-search__tag" for="search_desc"><input type="checkbox" name="search_tags"
+                        id="search_tags_portfolio"> <small class="data-search__hidden-label-text">Buscar por etiqueta
+                    </small>portfolio</label>
+                <label class="data-search__tag" for="search_desc"><input type="checkbox" name="search_tags"
+                        id="search_tags_portfolio"> <small class="data-search__hidden-label-text">Buscar por etiqueta
+                    </small>html</label>
                 <label class="data-search__epigraph" for="search_desc">
-          Buscar bookmarks de los profes:
-          <select class="data-search__tag" name="search_desc" id="search_desc">
-            <option disabled selected>Escoge una opción:</option>
-            <option value="all">Todas</option>
-            <option value="seen">Leído</option>
-            <option value="unseen">Por leer</option>
-          </select>
-        </label>
+                    Buscar bookmarks de los profes:
+                    <select class="data-search__tag" name="search_desc" id="search_desc">
+                        <option disabled selected>Escoge una opción:</option>
+                        <option value="all">Todas</option>
+                        <option value="seen">Leído</option>
+                        <option value="unseen">Por leer</option>
+                    </select>
+                </label>
             </fieldset>
             <fieldset class="menu__data-layout">
                 <h2 class="menu__title">Visualización</h2>
-                <button class="data-layout__button js-button-listview" title="Mostrar los bookmarks organizados como una de lista de tarjetas"><i class="fas fa-th"></i><span class="data-layout__button--text">Vista tarjetas</span></button>
-                <button class="data-layout__button js-button-tableview selected" title="Mostrar los bookmarks como una tabla"><i class="fas fa-bars"></i><span class="data-layout__button--text">Vista tabla</span></button>
+                <button class="data-layout__button js-button-listview" title="Mostrar los bookmarks organizados como una de lista de tarjetas"><i
+                        class="fas fa-th"></i><span class="data-layout__button--text">Vista tarjetas</span></button>
+                <button class="data-layout__button js-button-tableview selected" title="Mostrar los bookmarks como una tabla"><i class="fas fa-bars"></i><span
+                        class="data-layout__button--text">Vista tabla</span></button>
             </fieldset>
         </form>
         <main class="main">
@@ -58,17 +68,19 @@
                 </div>
                 <ul class="data__list js-data__list"></ul>
                 <div class="data__actions">
-                    <section class="data-actions__add hidden js-data-actions">
-                        <button class="data-actions__button-add" title="Crear un nuevo bookmark"><i class="fas fa-plus data-actions__button-add--icon"></i><span class="data-actions__button-add--label">Nueva</span></button>
+                    <section class="js-data-actions data-actions__add hidden">
+                        <button class="data-actions__button-add" title="Crear un nuevo bookmark"><i
+                                class="fas fa-plus data-actions__button-add--icon"></i><span
+                                class="data-actions__button-add--label">Nueva</span></button>
                         <form class="data__item data-actions__data">
                             <h3 class="data-actions__title">Datos del nuevo bookmark:</h3>
-                            <input class="data-actions__input" type="text" name="new_dir" id="new_dir" placeholder="Nueva URL">
-                            <label class="data-actions__label"><!--Esta lección <input class="data-actions__input" type="checkbox" name="new_seen" id="new_seen">--></label>
-                            <input class="data-actions__input" type="text" name="new_desc" id="new_desc" placeholder="Descripción">
-                            <input class="data-actions__input" type="text" name="new_tags" id="new_tags" placeholder="Etiquetas (separadas por comas)">
+                            <input class="data-actions__input js-new-bookmark-url" type="text" name="new_dir" id="new_dir" placeholder="Nueva URL">
+                            <!--<label class="data-actions__label"><input class="data-actions__input" type="checkbox" name="new_seen" id="new_seen"></label>-->
+                            <input class="data-actions__input js-new-bookmark-desc" type="text" name="new_desc" id="new_desc" placeholder="Descripción">
+                            <input class="data-actions__input js-new-bookmark-tags" type="text" name="new_tags" id="new_tags" placeholder="Etiquetas (separadas por comas)">
                             <fieldset class="data-actions__add--buttons">
                                 <button class="data-actions__button cancel">Cancelar</button>
-                                <button class="data-actions__button accept">Guardar</button>
+                                <button class="data-actions__button accept js-save-new-bookmark">Guardar</button>
                             </fieldset>
                         </form>
                     </section>

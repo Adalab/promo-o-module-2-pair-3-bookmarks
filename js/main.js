@@ -1,14 +1,6 @@
 'use strict';
 
-
-// get html element
-function getElement(selector) {
-  return document.querySelector(selector);
-}
-
-
 // array of objects
-
 const bmkData = [{
     url: 'https://books.adalab.es/materiales-del-curso-n/-MdR6Gp68BX20m1pi0z2/modulo-2-programando-la-web/javascript/2_1_intro_a_la_programacion',
     desc: 'JS en los materiales de Adalab',
@@ -30,13 +22,19 @@ const bmkData = [{
 ];
 
 
-// paint html
+// get html element
+function getElement(selector) {
+  return document.querySelector(selector);
+}
+
+
+// render html
 
 function renderTags(tags) {
   let htmlTags = '';
 
   if (tags.length === 0) {
-    htmlTags = '<p class="item__tags">No tiene categorías</p>';
+    htmlTags = '<p class="item__tags">Sin etiquetas</p>';
   } else {
     htmlTags = '<ul class="item__tags">';
     for (const tag of tags) {
@@ -69,13 +67,17 @@ function renderBookmark(url, desc, seen, tags) {
   return htmlBookmark;
 }
 
-let html = '';
-for (const bookmark of bmkData) {
-  html += renderBookmark(bookmark.url, bookmark.desc, bookmark.seen, bookmark.tags);
+function renderBookmarks() {
+  let html = '';
+  for (const bookmark of bmkData) {
+    html += renderBookmark(bookmark.url, bookmark.desc, bookmark.seen, bookmark.tags);
+  }
+
+  const bookmarks = getElement('.js-data__list');
+  bookmarks.innerHTML = html;
 }
 
-const bookmarks = getElement('.js-data__list');
-bookmarks.innerHTML = html;
+renderBookmarks();
 
 
 // display new bookmark form
@@ -130,3 +132,45 @@ function handlerClickTableview(event) {
   data.classList.remove('listview');
   data.classList.add('tableview');
 }
+
+
+// add new bookmark
+
+const saveNewBookmarkElement = getElement('.js-save-new-bookmark');
+const newBookmarkUrl = getElement('.js-new-bookmark-url');
+const newBookmarkDesc = getElement('.js-new-bookmark-desc');
+const newBookmarkTags = getElement('.js-new-bookmark-tags');
+
+function saveNewBookmark(event) {
+  event.preventDefault();
+  const newBookmarkDataObject = {};
+
+  if (newBookmarkUrl.value) {
+    newBookmarkDataObject.url = newBookmarkUrl.value;
+    newBookmarkDataObject.desc = newBookmarkDesc.value;
+    newBookmarkDataObject.seen = false;
+
+    let tags = newBookmarkTags.value;
+    if (tags) {
+      // remove white spaces
+      tags = tags.replace(/\s+/g, '');
+      // separate in tags
+      tags = tags.split(',');
+      newBookmarkDataObject.tags = tags;
+    } else {
+      newBookmarkDataObject.tags = [];
+    }
+
+    bmkData.push(newBookmarkDataObject);
+    renderBookmarks();
+
+    // reset and close form
+    newBookmarkUrl.value = '';
+    newBookmarkDesc.value = '';
+    newBookmarkTags.value = '';
+    newBookmarkElement.classList.add('hidden');
+    console.log(newBookmarkElement);
+  }
+}
+
+saveNewBookmarkElement.addEventListener('click', saveNewBookmark);

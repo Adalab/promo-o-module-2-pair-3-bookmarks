@@ -246,7 +246,7 @@ function renderBookmark(bmkData) {
 
 ---
 
-# Bookmark: Objetos
+# Bookmark: Objetos (día 7)
 
 ## Ejercicio 1
 
@@ -283,3 +283,51 @@ Vamos a hacer un array también con las etiquetas de cada bookmark. Será un arr
 Debemos quitar las propiedades `tags_1` y `tags_2` de cada objeto con datos de cada Bookmark y agruparlos en una única propiedad `tags` que sea un array con los dos valores de las etiquetas. Puedes retirar los valores que sean cadenas vacías (así tendremos arrays de 0, 1 ó 2 elementos).
 
 También deberemos modificar la función `renderTags()` para que reciba como parámetro una única variable que sea el array de tags, pero su valor de retorno deberá ser el mismo. Recuerda cambiar el argumento que le pasas a esta función dentro de la función `renderBookmark()`.
+
+---
+
+# Bookmark: Arrays II (día 8)
+
+## Ejercicio 1: Agregar nuevo enlace
+
+Vamos a añadir un nuevo bookmark al listado de enlaces desde el formulario. Haz una nueva función manejadora del evento click del botón **Guardar** del formulario, podemos llamarla `saveNewBookmark(ev)`.
+
+Esta función obtiene los valores de cada uno de los inputs, crea un nuevo objeto `newBookmarkDataObject` que agregaremos al listado de enlaces con la siguiente línea de código:
+
+```js
+bmkData.push(newBookmarkDataObject);
+```
+
+Recuerda limpiar los valores de los `inputs` y volver a ocultar la sección del formulario.
+
+## Ejericio 2: Cancelar formulario
+
+Haz el código necesario para ocultar la sección del fomulario de añadir un nuevo enlace. Recuerda tambien limpiar los valores de los `inputs`.
+
+---
+
+# Bookmark: Peticiones al servidor I (día 9)
+
+## Ejercicio 1
+
+Vamos a obtener la lista de bookmarks de un servidor. Para realizar este ejercicios tenemos creado un servidor que devuelve un listado con la información de los enlaces de un usuario en formato `json`:
+
+```js
+...
+
+    {
+    "id": "16396904232462016",
+    "owner": "adalabdigital",
+    "url": "https://books.adalab.es/materiales-del-curso-o/XwqEzZ1o5Xgza96sxhld/modulo-2-programando-la-web/javascript/2_1_intro_a_la_programacion",
+    "description": "JS en los materiales de Adalab",
+    "module": false,
+    "tags": [ "javascript"]
+    },
+
+...
+```
+
+Prueba la siguiente petición en en tu navegador con tu usuario de GitHub:
+https://adalab-bookmarks-api.herokuapp.com/api/bookmarks/tuusuariodegithub
+
+Haz un `fetch` para obtener el lisatdo los enlaces y mostrar en la página de los bookmarks.
