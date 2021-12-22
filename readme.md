@@ -1,3 +1,20 @@
+# Ejercicio global Bookmarks (Módulo 2 - Javascript)
+
+1. [x] Recopilatorio de Bookmarks
+2. [x] Agregar contenido
+3. [x] Muestra el desplegable del menú hamburguesa
+4. [x] Condicionales
+5. [x] Eventos
+6. [x] Objetos
+7. [x] Arrays
+8. [x] Arrays II
+9. [ ] Peticiones al servidor I
+10. [ ] Peticiones al servidor II
+11. [ ] DOM Avanzado
+12. [ ] Métodos funcionales de arrays
+
+---
+
 # Recopilatorio de Bookmarks (día 1)
 
 Vamos a hacer una aplicación web para ir anotando los enlaces y páginas web que nos parezcan interesantes.
@@ -246,7 +263,7 @@ function renderBookmark(bmkData) {
 
 ---
 
-# Bookmark: Objetos (día 7)
+# Bookmark: Arrays (día 7)
 
 ## Ejercicio 1
 
@@ -331,3 +348,45 @@ Prueba la siguiente petición en en tu navegador con tu usuario de GitHub:
 https://adalab-bookmarks-api.herokuapp.com/api/bookmarks/tuusuariodegithub
 
 Haz un `fetch` para obtener el lisatdo los enlaces y mostrar en la página de los bookmarks.
+
+---
+
+# Bookmark: Peticiones al servidor II (día 10)
+
+## Ejercicio 1
+
+Guarda los datos de los bookmarks en el local storage, asi cada vez que se inicie la aplicación primero busque si los datos están almacenados en el local storage y en caso de que no estén, entonces se hace la petición de los datos al servidor.
+
+## Ejercicio 2 (BONUS)
+
+Guarda un nuevo bookmarks en el servidor, haz una petición `post` para guardar los datos a la siguiente dirección: https://adalab-bookmarks-api.herokuapp.com/api/bookmark/tuusuariodegithub.
+
+## Ejercicio 3 (BONUS)
+
+Haz fetch al servidor al cambiar el campo de Leído de un bookmark.
+Usar el servidor https://adalab-bookmarks-api.herokuapp.com/api/bookmark/tuusuariodegithub/iddelbookmark con el método PUT.
+
+---
+
+# Bookmark: DOM Avanzado (día 11)
+
+## Ejercicio 1
+
+Cambia los innerHTML de las funciones `renderTags()`, `renderSeen()` y `renderBookmark()` por sentencias de creación de elementos.
+Probablemente la función `renderSeen()` ya es útil como está y nos conviene hacer funciones para cada campo: `renderURL()`, `renderSeen()`, `renderDescription()` y `renderTags()`.
+
+---
+
+# Bookmark: Métodos funcionales de arrays (día 12)
+
+## Ejercicio 1
+
+El menú lateral de la aplicación tiene un `input` para realizar búsquedas. Haz el código necesario para filtrar según la descripción de los bookmarks. Utiliza el método de arrays `filter`.
+
+## Ejercicio 2 (BONUS)
+
+Agrega el código necesario para filtrar si el enlace está leido o no, además de la descripción.
+
+## Ejercicio 3 (BONUS)
+
+Agrega una nueva funcionalidad que permita filtrar por las etiquetas, además de filtrar si el enlace está leido o no y por la descripción.

@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    -->
     <link rel="stylesheet" href="./css/main.css">
     <title>Ada-bookmarks</title>
 </head>
@@ -69,7 +71,7 @@
                 <ul class="data__list js-data__list"></ul>
                 <div class="data__actions">
                     <section class="js-data-actions data-actions__add hidden">
-                        <button class="data-actions__button-add" title="Crear un nuevo bookmark"><i
+                        <button class="data-actions__button-add js-new-bookmark-button" title="Crear un nuevo bookmark"><i
                                 class="fas fa-plus data-actions__button-add--icon"></i><span
                                 class="data-actions__button-add--label">Nueva</span></button>
                         <form class="data__item data-actions__data">
@@ -79,7 +81,7 @@
                             <input class="data-actions__input js-new-bookmark-desc" type="text" name="new_desc" id="new_desc" placeholder="Descripción">
                             <input class="data-actions__input js-new-bookmark-tags" type="text" name="new_tags" id="new_tags" placeholder="Etiquetas (separadas por comas)">
                             <fieldset class="data-actions__add--buttons">
-                                <button class="data-actions__button cancel">Cancelar</button>
+                                <button class="data-actions__button cancel js-cancel-new-bookmark">Cancelar</button>
                                 <button class="data-actions__button accept js-save-new-bookmark">Guardar</button>
                             </fieldset>
                         </form>

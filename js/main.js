@@ -82,12 +82,13 @@ renderBookmarks();
 
 // display new bookmark form
 
+const newBookmarkButtonElement = getElement('.js-new-bookmark-button');
 const newBookmarkElement = getElement('.js-data-actions');
 
-newBookmarkElement.addEventListener('click', handlerClickNewBookmark);
+newBookmarkButtonElement.addEventListener('click', handlerClickNewBookmark);
 
-function handlerClickNewBookmark(event) {
-  event.currentTarget.classList.remove('hidden');
+function handlerClickNewBookmark() {
+  newBookmarkElement.classList.remove('hidden');
 }
 
 
@@ -99,6 +100,7 @@ burgerElement.addEventListener('click', handlerClickBurgerElement);
 
 function handlerClickBurgerElement(event) {
   event.preventDefault();
+
   const menu = getElement('.js-menudropdown');
   menu.classList.toggle('collapsed');
 }
@@ -137,12 +139,14 @@ function handlerClickTableview(event) {
 // add new bookmark
 
 const saveNewBookmarkElement = getElement('.js-save-new-bookmark');
+const cancelNewBookmarkElement = getElement('.js-cancel-new-bookmark');
 const newBookmarkUrl = getElement('.js-new-bookmark-url');
 const newBookmarkDesc = getElement('.js-new-bookmark-desc');
 const newBookmarkTags = getElement('.js-new-bookmark-tags');
 
 function saveNewBookmark(event) {
   event.preventDefault();
+
   const newBookmarkDataObject = {};
 
   if (newBookmarkUrl.value) {
@@ -165,12 +169,27 @@ function saveNewBookmark(event) {
     renderBookmarks();
 
     // reset and close form
-    newBookmarkUrl.value = '';
-    newBookmarkDesc.value = '';
-    newBookmarkTags.value = '';
-    newBookmarkElement.classList.add('hidden');
-    console.log(newBookmarkElement);
+    resetNewBookmarkForm();
   }
 }
 
 saveNewBookmarkElement.addEventListener('click', saveNewBookmark);
+
+function cancelNewBookmark(event) {
+  event.preventDefault();
+
+  // reset and close form
+  resetNewBookmarkForm();
+}
+
+cancelNewBookmarkElement.addEventListener('click', cancelNewBookmark);
+
+
+// reset and close form
+
+function resetNewBookmarkForm() {
+  newBookmarkUrl.value = '';
+  newBookmarkDesc.value = '';
+  newBookmarkTags.value = '';
+  newBookmarkElement.classList.add('hidden');
+}
