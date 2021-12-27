@@ -1,17 +1,17 @@
 # Ejercicio global Bookmarks (Módulo 2 - Javascript)
 
-1. [x] Recopilatorio de Bookmarks
-2. [x] Agregar contenido
-3. [x] Muestra el desplegable del menú hamburguesa
-4. [x] Condicionales
-5. [x] Eventos
-6. [x] Objetos
-7. [x] Arrays
-8. [x] Arrays II
-9. [ ] Peticiones al servidor I
-10. [ ] Peticiones al servidor II
-11. [ ] DOM Avanzado
-12. [ ] Métodos funcionales de arrays
+1. [x] [Recopilatorio de Bookmarks](#recopilatorio-de-bookmarks-día-1)
+2. [x] [Agregar contenido](#bookmark-agregar-contenido-día-2)
+3. [x] [Usar variables](#bookmark-usar-variables-día-3)
+4. [x] [Condicionales](#bookmark-condicionales-día-4)
+5. [x] [Eventos](#bookmark-eventos-día-5)
+6. [x] [Objetos](#bookmark-objetos-día-6)
+7. [x] [Arrays](#bookmark-arrays-día-7)
+8. [x] [Arrays II](#bookmark-arrays-ii-día-8)
+9. [x] [Peticiones al servidor I](#bookmark-peticiones-al-servidor-i-día-9)
+10. [x] [Peticiones al servidor II](#bookmark-peticiones-al-servidor-ii-día-10)
+11. [x] [DOM Avanzado](#bookmark-dom-avanzado-día-11)
+12. [ ] [Métodos funcionales de arrays](#bookmark-métodos-funcionales-de-arrays-día-12)
 
 ---
 
