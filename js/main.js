@@ -199,14 +199,6 @@ function displayTableView() {
 }
 
 
-// helpers
-
-// get html element
-function getElement(selector) {
-  return document.querySelector(selector);
-}
-
-
 // add new bookmark
 
 function addNewBookmark() {
@@ -273,6 +265,14 @@ function handleClickCheckbox(event) {
   bmkData[index].module = event.currentTarget.checked;
   //updateDataInApi(`${API_URL}/bookmark/${GITHUB_USER}/${id}`, bmkData[index]);
   console.log('Aquí haría una petición PUT pero la API devuelve un error HTTP 500.');
+}
+
+
+// helpers
+
+// get html element
+function getElement(selector) {
+  return document.querySelector(selector);
 }
 
 
