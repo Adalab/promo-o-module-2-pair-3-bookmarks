@@ -19,21 +19,21 @@
 
 Vamos a hacer una aplicación web para ir anotando los enlaces y páginas web que nos parezcan interesantes.
 
-![Screenshot de la aplicación web](./README_screenshot_main.png)
+![Screenshot de la aplicación web](./images/README_screenshot_main.png)
 
 La sección principal de la aplicación consta de un listado en forma de tabla (que también puede transformarse en una cuadrícula de tarjetas) donde se muestran los enlaces ya guardados por al usuaria y junto con una breve descripción, el origen y etiquetas para categorizarlos.
 
 La aplicación tiene un menú hamburguesa (en la parte superior derecha) que al pulsar sobre él se muestran las opciones de filtrado y de visualización del listado.
 
-![Screenshot del menú desplegado](./README_screenshot_menu.png)
+![Screenshot del menú desplegado](./images/README_screenshot_menu.png)
 
 Al pulsar sobre el botón de "Vista tarjetas", la lista de enlaces se convertirá en un panel de tarjetas, donde cada una contendrá la información de un enlace:
 
-![Screenshot con el listado en forma de tarjetas](./README_screenshot_tarjetas.png)
+![Screenshot con el listado en forma de tarjetas](./images/README_screenshot_tarjetas.png)
 
 Por último, la usuaria puede añadir nuevos enlaces pulsando sobre el botón "Nueva" que mostrará un formulario para rellenar los datos del nuevo enlace a guardar.
 
-![Screenshot del formulario para crear un nuevo enlace](./README_screenshot_nueva.png)
+![Screenshot del formulario para crear un nuevo enlace](./images/README_screenshot_nueva.png)
 
 ---
 
@@ -59,7 +59,7 @@ La usuaria puede añadir nuevos enlaces pulsando sobre el botón "Nueva" que mos
 
 > **Pista**: Busca la sección que contiene este formualrio y utiliza la propiedad classList.remove("hidden");
 
-![Screenshot del formulario para crear un nuevo enlace](../README_screenshot_nueva.png)
+![Screenshot del formulario para crear un nuevo enlace](./images/README_screenshot_nueva.png)
 
 ### 3. Muestra el desplegable del menú hamburguesa
 
@@ -67,7 +67,7 @@ La aplicación tiene un menú hamburguesa (en la parte superior derecha) que al 
 
 > **Pista**: Busca la sección que contiene este menú y utiliza la propiedad classList.remove("collapsed");
 > P
-> ![Screenshot del menú desplegado](../README_screenshot_menu.png)
+> ![Screenshot del menú desplegado](./images/README_screenshot_menu.png)
 
 ### 4. Agregar los enlaces dinámicamente
 
@@ -166,7 +166,7 @@ if( bmk_2_desc.includes(descrSearchText) ) {
 
 Vamos a validar la columna de las categorías de los enlaces: Si el enlace no tiene categoría mostraremos el mensaje **No tiene categorías**.
 
-![Screenshot de la aplicación web](list_without_categories.png)
+![Screenshot de la aplicación web](./images/list_without_categories.png)
 
 Para ello podemos verificar si las categorías tienen algún valor, y en dependencia del resultado del condicional mostrar un resultado u utro.
 
