@@ -11,7 +11,7 @@
 9. [x] [Peticiones al servidor I](#bookmark-peticiones-al-servidor-i-día-9)
 10. [x] [Peticiones al servidor II](#bookmark-peticiones-al-servidor-ii-día-10)
 11. [x] [DOM Avanzado](#bookmark-dom-avanzado-día-11)
-12. [ ] [Métodos funcionales de arrays](#bookmark-métodos-funcionales-de-arrays-día-12)
+12. [x] [Métodos funcionales de arrays](#bookmark-métodos-funcionales-de-arrays-día-12)
 
 ---
 
@@ -96,11 +96,11 @@ Por ejemplo:
 
 ```js
 const bmk_1_url =
-  "https://books.adalab.es/materiales-del-curso-n/-MdR6Gp68BX20m1pi0z2/modulo-2-programando-la-web/javascript/2_1_intro_a_la_programacion";
-const bmk_1_desc = "JS en los materiales de Adalab";
-const bmk_1_seen = "checked";
-const bmk_1_tags_1 = "javascript";
-const bmk_1_tags_2 = "html";
+  'https://books.adalab.es/materiales-del-curso-n/-MdR6Gp68BX20m1pi0z2/modulo-2-programando-la-web/javascript/2_1_intro_a_la_programacion';
+const bmk_1_desc = 'JS en los materiales de Adalab';
+const bmk_1_seen = 'checked';
+const bmk_1_tags_1 = 'javascript';
+const bmk_1_tags_2 = 'html';
 ```
 
 > **Nota** : Usamos \_ en los nombres de las variables, pero por una razón académica.
@@ -140,13 +140,13 @@ Vamos a comenzar a implementar el filtro de búsqueda por descripción. Para ell
 2. Seleccionamos el `input` con el `document.querySelector`
 
 ```js
-const input_search_desc = document.querySelector(".js_in_search_desc");
+const input_search_desc = document.querySelector('.js_in_search_desc');
 ```
 
 3. Simulamos que escribe la usuaria en el `input` de búsqueda.
 
 ```js
-input_search_desc.value = "materiales";
+input_search_desc.value = 'materiales';
 ```
 
 4. Recoger el valor del `input` en una variable.
@@ -230,7 +230,7 @@ Crea las funciones necesarias para mostrar el formulario de añadir una nueva ta
 //función que muestra el formulario para agregar un nuevo enlace
 
 function showAddForm() {
-  sectionAdd.classList.remove("hidden");
+  sectionAdd.classList.remove('hidden');
 }
 ```
 
@@ -245,11 +245,11 @@ Crea un objeto `bmkData` para cada uno de los enlaces que contenga toda la infor
 ```js
 //objeto con la información del primer enlace
 const bmkData_1 = {
-  url: "https://books.adalab.es/materiales-del-curso-n/-MdR6Gp68BX20m1pi0z2/modulo-2-programando-la-web/javascript/2_1_intro_a_la_programacion",
-  desc: "JS en los materiales de Adalab",
+  url: 'https://books.adalab.es/materiales-del-curso-n/-MdR6Gp68BX20m1pi0z2/modulo-2-programando-la-web/javascript/2_1_intro_a_la_programacion',
+  desc: 'JS en los materiales de Adalab',
   seen: true,
-  tags_1: "javascript",
-  tags_2: "",
+  tags_1: 'javascript',
+  tags_2: '',
 };
 ```
 
@@ -272,11 +272,11 @@ Hoy vamos a crear una única variable `bmkData` que almacenará los datos de tod
 ```js
 // Objeto con la información del primer enlace
 const bmkData_1 = {
-  url: "https://books.adalab.es/materiales-del-curso-n/-MdR6Gp68BX20m1pi0z2/modulo-2-programando-la-web/javascript/2_1_intro_a_la_programacion",
-  desc: "JS en los materiales de Adalab",
+  url: 'https://books.adalab.es/materiales-del-curso-n/-MdR6Gp68BX20m1pi0z2/modulo-2-programando-la-web/javascript/2_1_intro_a_la_programacion',
+  desc: 'JS en los materiales de Adalab',
   seen: true,
-  tags_1: "javascript",
-  tags_2: "",
+  tags_1: 'javascript',
+  tags_2: '',
 };
 
 // Objeto con la información del segundo enlace
@@ -290,7 +290,7 @@ const bmkData_3 = {
 };
 
 // Lista con la información de todos los enlaces
-const bmkData = [ bmkData_1, bmkData_2, bmkData_3 ];
+const bmkData = [bmkData_1, bmkData_2, bmkData_3];
 ```
 
 ## Ejercicio 2 (BONUS)

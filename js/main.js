@@ -1,12 +1,10 @@
 'use strict';
 
-
 // global data
 
 const GITHUB_USER = 'mararochafernandez';
-const API_URL = `https://adalab-bookmarks-api.herokuapp.com/api`;
+const API_URL = 'https://adalab-bookmarks-api.herokuapp.com/api';
 let bmkData = [];
-
 
 // main function
 
@@ -14,12 +12,12 @@ function startApp() {
   getDataFromLocalStorage();
   if (!bmkData) {
     getDataFromApi(`${API_URL}/bookmarks/${GITHUB_USER}`).then(() => {
-      //saveDataInLocalStorage();
-      renderBookmarks();
+      saveDataInLocalStorage();
+      renderBookmarks(bmkData);
       listenCheckboxes();
     });
   } else {
-    renderBookmarks();
+    renderBookmarks(bmkData);
     listenCheckboxes();
   }
   displayBurgerMenu();
@@ -27,41 +25,49 @@ function startApp() {
   displayListView();
   displayTableView();
   addNewBookmark();
+  searchInDesc();
 }
-
 
 // api data
 
 function getDataFromApi(url) {
   return fetch(url)
-    .then(response => response.json())
-    .then(data => bmkData = data.results);
+    .then((response) => response.json())
+    .then((data) => (bmkData = data.results));
 }
 
 function saveDataInApi(url, newBmkData) {
   fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(newBmkData),
-      headers: {
-        'Content-Type': 'application/json'
+    method: 'POST',
+    body: JSON.stringify(newBmkData),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        getDataFromApi(`${API_URL}/bookmarks/${GITHUB_USER}`).then(() => {
+          saveDataInLocalStorage();
+          renderBookmarks(bmkData);
+          listenCheckboxes();
+          resetNewBookmarkForm();
+        });
       }
-    })
-    .then(response => response.json())
-    .then(data => data);
+    });
 }
 
 function updateDataInApi(url, newBmkData) {
   fetch(url, {
-      method: 'PUT',
-      body: JSON.stringify(newBmkData),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(data => data);
+    method: 'PUT',
+    body: JSON.stringify(newBmkData),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => data);
 }
-
 
 // local storage data
 
@@ -73,12 +79,14 @@ function saveDataInLocalStorage() {
   localStorage.setItem('bmkData', JSON.stringify(bmkData));
 }
 
-
 // render html
 
-function renderBookmarks() {
+function renderBookmarks(bmkData) {
+  getElement('.js-data__list').textContent = '';
   for (const bmk of bmkData) {
-    getElement('.js-data__list').appendChild(renderBookmark(bmk.id, bmk.url, bmk.description, bmk.module, bmk.tags));
+    getElement('.js-data__list').appendChild(
+      renderBookmark(bmk.id, bmk.url, bmk.description, bmk.module, bmk.tags)
+    );
   }
 }
 
@@ -101,7 +109,7 @@ function renderUrl(url) {
   const newLink = document.createElement('a');
   newLink.href = url;
   newLink.target = '_blank';
-  newLink.rel = "noopener noreferrer";
+  newLink.rel = 'noopener noreferrer';
   newLink.textContent = url.replace('https://', '');
 
   const newText = document.createElement('p');
@@ -151,7 +159,6 @@ function renderTags(tags) {
   }
 }
 
-
 // display/hidden html elements
 
 function displayBurgerMenu() {
@@ -168,7 +175,6 @@ function displayNewBookmarkForm() {
   const newBookmarkElement = getElement('.js-data-actions');
   newBookmarkButtonElement.addEventListener('click', () => {
     newBookmarkElement.classList.remove('hidden');
-
   });
 }
 
@@ -198,7 +204,6 @@ function displayTableView() {
   });
 }
 
-
 // add new bookmark
 
 function addNewBookmark() {
@@ -214,7 +219,7 @@ function addNewBookmark() {
 
 function saveNewBookmark(event) {
   event.preventDefault();
-  const newBookmarkDataObject = {};
+  let newBookmarkDataObject = {};
   const newBookmarkUrl = getElement('.js-new-bookmark-url');
   const newBookmarkDesc = getElement('.js-new-bookmark-desc');
   const newBookmarkTags = getElement('.js-new-bookmark-tags');
@@ -233,12 +238,7 @@ function saveNewBookmark(event) {
       newBookmarkDataObject.tags = [];
     }
 
-    bmkData.push(newBookmarkDataObject);
     saveDataInApi(`${API_URL}/bookmark/${GITHUB_USER}`, newBookmarkDataObject);
-    //saveDataInLocalStorage();
-    renderBookmarks();
-    listenCheckboxes();
-    resetNewBookmarkForm();
   }
 }
 
@@ -248,7 +248,6 @@ function resetNewBookmarkForm() {
   getElement('.js-new-bookmark-tags').value = '';
   getElement('.js-data-actions').classList.add('hidden');
 }
-
 
 // listen checkboxes
 
@@ -261,12 +260,112 @@ function listenCheckboxes() {
 
 function handleClickCheckbox(event) {
   const id = event.currentTarget.dataset.id;
-  const index = bmkData.findIndex(bmk => bmk.id === id);
+  const index = bmkData.findIndex((bmk) => bmk.id === id);
   bmkData[index].module = event.currentTarget.checked;
   //updateDataInApi(`${API_URL}/bookmark/${GITHUB_USER}/${id}`, bmkData[index]);
-  console.log('Aquí haría una petición PUT pero la API devuelve un error HTTP 500.');
+  console.log(
+    'Aquí haría una petición PUT pero la API devuelve un error HTTP 500.'
+  );
+  saveDataInLocalStorage();
 }
 
+// search form
+
+let bmkDataFiltered = [];
+let inputValue = '';
+let selectValue = null;
+let javascriptCheckboxValue = '';
+let portfolioCheckboxValue = '';
+let htmlCheckboxValue = '';
+
+function filterByDesc() {
+  bmkDataFiltered = bmkDataFiltered.filter((bmk) =>
+    bmk.description.toLowerCase().includes(inputValue.toLowerCase())
+  );
+}
+
+function filterBySeen() {
+  if (selectValue !== null) {
+    bmkDataFiltered = bmkDataFiltered.filter(
+      (bmk) => bmk.module === selectValue
+    );
+  }
+}
+
+function filterByTags() {
+  if (
+    javascriptCheckboxValue !== '' ||
+    portfolioCheckboxValue !== '' ||
+    htmlCheckboxValue !== ''
+  ) {
+    bmkDataFiltered = bmkDataFiltered.filter((bmk) =>
+      bmk.tags.find((tag) => {
+        if (
+          tag === javascriptCheckboxValue ||
+          tag === portfolioCheckboxValue ||
+          tag === htmlCheckboxValue
+        ) {
+          return bmk;
+        }
+      })
+    );
+  }
+}
+
+function filterBookmarks() {
+  bmkDataFiltered = bmkData;
+  filterByDesc();
+  filterBySeen();
+  filterByTags();
+  renderBookmarks(bmkDataFiltered);
+  listenCheckboxes();
+}
+
+function handleKeyUpInput(event) {
+  inputValue = event.currentTarget.value;
+  filterBookmarks();
+}
+
+function handleChangeSelect(event) {
+  const select = event.currentTarget;
+  if (select.value === 'seen') {
+    selectValue = true;
+  } else if (select.value === 'unseen') {
+    selectValue = false;
+  } else {
+    selectValue = null;
+  }
+  filterBookmarks();
+}
+
+function handleChangeCheckbox(event) {
+  const checkbox = event.currentTarget;
+  if (checkbox.value === 'javascript') {
+    javascriptCheckboxValue = checkbox.checked ? checkbox.value : '';
+  } else if (checkbox.value === 'portfolio') {
+    portfolioCheckboxValue = checkbox.checked ? checkbox.value : '';
+  } else if (checkbox.value === 'html') {
+    htmlCheckboxValue = checkbox.checked ? checkbox.value : '';
+  }
+  filterBookmarks();
+}
+
+function searchInDesc() {
+  getElement('.js-search-desc').addEventListener('keyup', handleKeyUpInput);
+  getElement('.js-search-seen').addEventListener('change', handleChangeSelect);
+  getElement('#search_tags_javascript').addEventListener(
+    'change',
+    handleChangeCheckbox
+  );
+  getElement('#search_tags_portfolio').addEventListener(
+    'change',
+    handleChangeCheckbox
+  );
+  getElement('#search_tags_html').addEventListener(
+    'change',
+    handleChangeCheckbox
+  );
+}
 
 // helpers
 
@@ -274,7 +373,6 @@ function handleClickCheckbox(event) {
 function getElement(selector) {
   return document.querySelector(selector);
 }
-
 
 // start app
 
